@@ -133,11 +133,10 @@ because you’re part of it.`;
   letterText.innerText =
 `Happy New Year, ${userName} 🤍
 Here’s to new beginnings,
-quiet wins,
-and moments that matter.
+quiet wins, and moments that matter.
 
-“Whatever comes next,
-may it be kinder than before.”
+'Whatever comes next,
+may it be kinder than before.';
 }
   };
 
