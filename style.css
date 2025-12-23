@@ -88,3 +88,25 @@ input {
     transform: translateY(0);
   }
 }
+
+.name-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+#nextBtn {
+  margin-top: 12px;
+  padding: 8px 22px;
+  font-size: 15px;
+  border-radius: 20px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+#nextBtn:hover {
+  opacity: 1;
+}
