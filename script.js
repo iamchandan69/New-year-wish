@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nameBox.style.display = "none";
     main.classList.remove("hidden");
 
-    bear.src = gender === "girl"
+    bear.src = gender === "girl","specialGirl"
       ? "bear-girl.png"
       : "bear-boy.png";
   };
