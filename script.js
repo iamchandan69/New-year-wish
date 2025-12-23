@@ -1,42 +1,41 @@
-/* ===============================
-   PRIVATE ONE-PERSON LINKS
-================================ */
+document.addEventListener("DOMContentLoaded", () => {
 
-const privateLinks = {
-  "aivena26": { name: "Aivena", gender: "girl" },
-  "rahul22": { name: "Rahul", gender: "boy" }
-};
+  /* ===============================
+     PRIVATE ONE-PERSON LINKS
+  ================================ */
 
-/* ===============================
-   VARIABLES
-================================ */
+  const privateLinks = {
+    "aivena26": { name: "Aivena", gender: "girl" },
+    "rahul22": { name: "Rahul", gender: "boy" }
+  };
 
-let userName = "";
-let gender = "girl";
+  let userName = "";
+  let gender = "girl";
 
-/* ===============================
-   CHECK PRIVATE LINK
-================================ */
-
-const params = new URLSearchParams(window.location.search);
-const token = params.get("token");
-
-if (token && privateLinks[token]) {
-  userName = privateLinks[token].name;
-  gender = privateLinks[token].gender;
-  startExperience();
-}
-
-/* ===============================
-   NAME INPUT (1-second)
-================================ */
-
-const nameInput = document.getElementById("nameInput");
-
-if (nameInput) {
+  const nameBox = document.getElementById("nameBox");
+  const nameInput = document.getElementById("nameInput");
   const nextBtn = document.getElementById("nextBtn");
+  const main = document.getElementById("main");
+  const bearImg = document.getElementById("bear");
 
-if (nextBtn) {
+  /* ===============================
+     CHECK PRIVATE LINK
+  ================================ */
+
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get("token");
+
+  if (token && privateLinks[token]) {
+    userName = privateLinks[token].name;
+    gender = privateLinks[token].gender;
+    startExperience();
+    return; // stop further input logic
+  }
+
+  /* ===============================
+     NEXT BUTTON CLICK
+  ================================ */
+
   nextBtn.addEventListener("click", () => {
     userName = nameInput.value.trim();
 
@@ -48,48 +47,56 @@ if (nextBtn) {
     gender = "girl"; // default for manual entry
     startExperience();
   });
-}
 
-/* ===============================
-   START EXPERIENCE
-================================ */
+  /* ===============================
+     ENTER KEY SUPPORT
+  ================================ */
 
-function startExperience() {
-  document.getElementById("nameBox").style.display = "none";
-  document.getElementById("main").classList.remove("hidden");
+  nameInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      nextBtn.click();
+    }
+  });
 
-  const bearImg = document.getElementById("bear");
+  /* ===============================
+     START EXPERIENCE
+  ================================ */
 
-  // 🔥 DIFFERENT BEAR PNG LOGIC
-  if (gender === "girl") {
-    bearImg.src = "bear-girl.png";
-  } else {
-    bearImg.src = "bear-boy.png";
+  function startExperience() {
+    nameBox.style.display = "none";
+    main.classList.remove("hidden");
+
+    if (gender === "girl") {
+      bearImg.src = "bear-girl.png";
+    } else {
+      bearImg.src = "bear-boy.png";
+    }
   }
-}
 
-/* ===============================
-   ENVELOPE CLICK → LETTER
-================================ */
+  /* ===============================
+     ENVELOPE CLICK → LETTER
+  ================================ */
 
-document.getElementById("envelope").addEventListener("click", () => {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("letter").classList.remove("hidden");
+  document.getElementById("envelope").addEventListener("click", () => {
+    main.style.display = "none";
+    document.getElementById("letter").classList.remove("hidden");
 
-  const girlText =
+    const girlText =
 `Happy New Year, ${userName} 🤍
 2026 feels special…
 because you’re part of it.`;
 
-  const boyText =
+    const boyText =
 `Happy New Year, ${userName} 🤍
 Some people quietly make the year better,
 just by being in it.`;
 
-  document.getElementById("letterText").innerText =
-    gender === "girl" ? girlText : boyText;
+    document.getElementById("letterText").innerText =
+      gender === "girl" ? girlText : boyText;
 
-  if (gender === "girl") {
-    document.getElementById("finalLine").classList.remove("hidden");
-  }
+    if (gender === "girl") {
+      document.getElementById("finalLine").classList.remove("hidden");
+    }
+  });
+
 });
