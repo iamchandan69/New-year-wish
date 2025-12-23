@@ -1,141 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const privateLinks = {
-    "aivena26": { name: "Aivena", gender: "girl" },
-    "rahul22": { name: "Rahul", gender: "boy" }
-  };
-
-  let userName = "";
-  let gender = "girl";
-
   const nameBox = document.getElementById("nameBox");
   const nameInput = document.getElementById("nameInput");
   const nextBtn = document.getElementById("nextBtn");
+
   const main = document.getElementById("main");
-  const bearImg = document.getElementById("bear");
+  const bear = document.getElementById("bear");
 
-  /* ---------- PRIVATE LINK ---------- */
+  const letter = document.getElementById("letter");
+  const letterText = document.getElementById("letterText");
+  const finalLine = document.getElementById("finalLine");
 
-  const params = new URLSearchParams(window.location.search);
-  const token = params.get("token");
+  let userName = "";
+  let gender = "boy";
 
-  if (token && privateLinks[token]) {
-    userName = privateLinks[token].name;
-    gender = privateLinks[token].gender;
-    startExperience();
-    return;
+  // 🔹 AUTO GENDER FROM NAME
+  function detectGender(name) {
+    const girlEndings = ["a", "i", "e"];
+    const n = name.toLowerCase();
+
+    if (girlEndings.some(end => n.endsWith(end))) return "girl";
+    return "boy";
   }
 
-  /* ---------- NEXT BUTTON ---------- */
-
-  nextBtn.addEventListener("click", (e) => {
-    e.preventDefault(); // 🔥 CRITICAL FIX
-
+  // 🔹 NEXT BUTTON (100% SAFE)
+  nextBtn.onclick = () => {
     userName = nameInput.value.trim();
 
     if (userName.length < 2) {
-      alert("Please enter your full name 🤍");
+      alert("Please enter your name");
       return;
     }
 
-    gender = detectGenderFromName(userName);
-startExperience();
-  });
+    gender = detectGender(userName);
 
-  /* ---------- ENTER KEY ---------- */
-
-  nameInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      nextBtn.click();
-    }
-  });
-
-  /* ---------- START EXPERIENCE ---------- */
-
-  function startExperience() {
     nameBox.style.display = "none";
     main.classList.remove("hidden");
 
-    bearImg.src = gender === "girl"
+    bear.src = gender === "girl"
       ? "bear-girl.png"
       : "bear-boy.png";
-  }
+  };
 
-  /* ---------- ENVELOPE ---------- */
-
+  // 🔹 BEAR CLICK → LETTER
+  bear.onclick = () => {
     main.style.display = "none";
-    document.getElementById("letter").classList.remove("hidden");
-
-    const girlText =
-`Happy New Year, ${userName} 🤍
-2026 feels special…
-because you’re part of it.`;
-
-    const boyText =
-`Happy New Year, ${userName} 🤍
-Some people quietly make the year better,
-just by being in it.`;
-
-    document.getElementById("letterText").innerText =
-      gender === "girl" ? girlText : boyText;
+    letter.classList.remove("hidden");
 
     if (gender === "girl") {
-      document.getElementById("finalLine").classList.remove("hidden");
-    }
-  });
-
-});
-
-function detectGenderFromName(name) {
-  const boyNames = [
-    "chandan","rahul","rohit","amit","arjun","karan","vikram",
-    "sachin","ankit","suresh","mahesh","ramesh","naresh",
-    "manish","pradeep","deepak","sunil","ashok","vijay",
-    "ajay","raj","rohan","mohit","naveen","sanjay"
-  ];
-
-  const girlNames = [
-    "aivena","aisha","priya","neha","kajal","pooja","anjali",
-    "simran","nisha","ranjita","ranjeeta","riya","chuleshwari","kiran","meena","suman","rekha",
-    "sonam","payal","isha","kriti","sneha","kavya","ananya"
-  ];
-
-  const cleanName = name.toLowerCase().trim();
-
-  if (boyNames.includes(cleanName)) return "boy";
-  if (girlNames.includes(cleanName)) return "girl";
-
-  // fallback logic
-  if (
-    cleanName.endsWith("a") ||
-    cleanName.endsWith("i") ||
-    cleanName.endsWith("e")
-  ) {
-    return "girl";
-  }
-
-  return "boy"; // default safe
-}
-
-bearImg.addEventListener("click", () => {
-  main.style.display = "none";
-  document.getElementById("letter").classList.remove("hidden");
-
-  const girlText =
+      letterText.innerText =
 `Happy New Year, ${userName} 🤍
 2026 feels special…
 because you’re part of it.`;
-
-  const boyText =
+      finalLine.classList.remove("hidden");
+    } else {
+      letterText.innerText =
 `Happy New Year, ${userName} 🤍
 Some people quietly make the year better,
 just by being in it.`;
+    }
+  };
 
-  document.getElementById("letterText").innerText =
-    gender === "girl" ? girlText : boyText;
-
-  if (gender === "girl") {
-    document.getElementById("finalLine").classList.remove("hidden");
-  }
 });
