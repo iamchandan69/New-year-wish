@@ -110,3 +110,12 @@ input {
 #nextBtn:hover {
   opacity: 1;
 }
+
+#bear {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#bear:hover {
+  transform: scale(1.05);
+}
