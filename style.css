@@ -1,79 +1,91 @@
-body {
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Georgia", serif;
   height: 100vh;
-  font-family: Arial, sans-serif;
+  background: #fff;
+}
+
+/* ===== COMMON FULL SCREEN LAYOUT ===== */
+#nameBox,
+#main,
+#letter {
+  position: fixed;
+  inset: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.center {
   text-align: center;
+  gap: 14px;
+  background: #fff;
 }
 
-/* Enter your name text */
+/* ===== HIDDEN STATE ===== */
+.hidden {
+  display: none !important;
+}
+
+/* ===== ENTER NAME SCREEN ===== */
 .name-title {
-  font-size: clamp(16px, 2.5vw, 28px);
-  text-align: center;
-  margin-bottom: 12px;
+  font-size: clamp(18px, 2.5vw, 30px);
+  margin-bottom: 8px;
 }
 
-/* Name input box */
 #nameInput {
-  font-size: clamp(14px, 2.2vw, 22px);
-  width: clamp(180px, 50%, 300px);
-  padding: 12px 20px;
-  border-radius: 20px;
+  width: clamp(220px, 50vw, 320px);
+  padding: 14px 20px;
+  font-size: clamp(14px, 2vw, 20px);
+  border-radius: 25px;
   border: 1px solid #ccc;
+  outline: none;
 }
 
-/* Next button */
 #nextBtn {
-  margin-top: 12px;
-  font-size: clamp(14px, 2.2vw, 20px);
-  padding: clamp(8px, 1.5vw, 16px) clamp(16px, 3vw, 32px);
-  border-radius: 20px;
+  padding: 12px 32px;
+  font-size: clamp(14px, 2vw, 18px);
+  border-radius: 25px;
   border: none;
-  background: black;
-  color: white;
+  background: #000;
+  color: #fff;
   cursor: pointer;
 }
 
-/* Main screen with bear */
-#main {
-  text-align: center;
+/* ===== BEAR SCREEN ===== */
+.tap {
+  font-size: clamp(12px, 1.8vw, 18px);
+  opacity: 0.6;
 }
 
 #bear {
-  width: clamp(180px, 25vw, 300px);
+  width: clamp(180px, 28vw, 320px);
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
 }
 
 #bear:hover {
   transform: scale(1.05);
 }
 
-/* Top tap text */
-.tap {
-  font-size: clamp(12px, 1.8vw, 20px);
-  opacity: 0.7;
-  margin-bottom: 8px;
+/* ===== LETTER SCREEN ===== */
+#letterText {
+  font-size: clamp(18px, 2.5vw, 28px);
+  line-height: 1.4;
+  max-width: 80%;
 }
 
-/* Bottom text / letter */
-.bottom-text, #letterText {
-  font-size: clamp(14px, 2.2vw, 22px);
-  text-align: center;
+#finalLine {
+  font-size: clamp(12px, 1.6vw, 16px);
+  opacity: 0.6;
+  margin-top: 10px;
 }
 
-.signature, #finalLine {
-  margin-top: 14px;
-  opacity: 0.7;
-  font-size: clamp(12px, 1.8vw, 18px);
-}
-
-/* Confetti container */
+/* ===== CONFETTI ===== */
 #confetti-container {
   position: fixed;
   inset: 0;
@@ -84,8 +96,8 @@ body {
 
 .confetti {
   position: absolute;
-  width: clamp(8px, 0.8vw, 15px);
-  height: clamp(6px, 0.6vw, 12px);
+  width: clamp(8px, 0.8vw, 14px);
+  height: clamp(6px, 0.6vw, 10px);
   border-radius: 2px;
   opacity: 0.95;
 }
