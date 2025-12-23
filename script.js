@@ -14,12 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let userName = "";
   let gender = "boy";
   const specialGirls = ["ranjeeta", "chuleshwari","ranjita"];
+  const forceBoyNames = ["chandramani", "shivmani", "harimani"];
+  
   
   // 🔹 AUTO GENDER FROM NAME
   function detectGender(name) {
   const n = name.toLowerCase().trim();
 
   if (specialGirls.includes(n)) return "specialGirl";
+  if (forceBoyNames.includes(n)) return "boy";
 
   const girlEndings = ["a", "i", "e"];
   if (girlEndings.some(end => n.endsWith(end))) return "girl";
@@ -137,8 +140,9 @@ Wishing you the best always.`;
 Naya saal aa gaya, par ek cheez jo kabhi nahi badlegi…
 Wo hai humari dosti or Bhaichara on top💪😌
 Chahe saal badle, calendar badle, phones badle,
-par humari bakchodi, late replies, random plans fir cancel karna 😂
-aur “bhai kal milte hain” ka loop same hi rahega 😂.`;
+Par humari bakchodi, late replies,
+Random plans fir cancel karna 😂
+Aur “bhai kal milte hain” ka loop same hi rahega 😂.`;
     }
   };
 
