@@ -163,5 +163,7 @@ par aadatein wahi purani 😌
 Happy New Year, ${userName}.`;
     }
   };
-
+function getRandomWish(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}
 });
