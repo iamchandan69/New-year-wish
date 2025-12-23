@@ -121,13 +121,6 @@ I hope 2026 reminds you
 how special you truly are. ✨`;
 
   finalLine.classList.remove("hidden");
-
-} else if (gender === "girl") {
-  letterText.innerText = getRandomWish(girlWishes);
-  finalLine.classList.add("hidden");
-} else {
-  letterText.innerText = getRandomWish(boyWishes);
-  finalLine.classList.add("hidden");
 }
 if (gender === "girl") {
       letterText.innerText =
