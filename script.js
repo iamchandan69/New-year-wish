@@ -132,8 +132,12 @@ because you’re part of it.`;
 } else {
   letterText.innerText =
 `Happy New Year, ${userName} 🤍
-Some people quietly make the year better,
-just by being in it.`;
+Here’s to new beginnings,
+quiet wins,
+and moments that matter.
+
+“Whatever comes next,
+may it be kinder than before.”
 }
   };
 
