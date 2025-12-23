@@ -98,9 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
     nameBox.style.display = "none";
     main.classList.remove("hidden");
 
-    bear.src = gender === "girl"
-      ? "bear-girl.png"
-      : "bear-boy.png";
+    bear.src = (gender === "girl" || gender === "specialGirl")
+  ? "bear-girl.png"
+  : "bear-boy.png";
+
   };
 
   // 🔹 BEAR CLICK → FINAL WISH
@@ -127,7 +128,7 @@ how special you truly are. ✨`;
 2026 feels special…
 because you’re part of it.`;
 
-  finalLine.classList.remove("hidden");
+  finalLine.classList.add("hidden");
 
 } else {
   letterText.innerText =
