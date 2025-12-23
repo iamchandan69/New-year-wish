@@ -5,7 +5,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  zoom: 1.7;
+  transform: scale(1.05);
 }
 
 .hidden { display: none; }
