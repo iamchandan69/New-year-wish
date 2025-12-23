@@ -87,3 +87,35 @@ just by being in it.`;
   });
 
 });
+
+function detectGenderFromName(name) {
+  const boyNames = [
+    "chandan","rahul","rohit","amit","arjun","karan","vikram",
+    "sachin","ankit","suresh","mahesh","ramesh","naresh",
+    "manish","pradeep","deepak","sunil","ashok","vijay",
+    "ajay","raj","rohan","mohit","naveen","sanjay"
+  ];
+
+  const girlNames = [
+    "aivena","aisha","priya","neha","kajal","pooja","anjali",
+    "simran","nisha","ranjita","ranjeeta","riya","chuleshwari","kiran","meena","suman","rekha",
+    "sonam","payal","isha","kriti","sneha","kavya","ananya"
+  ];
+
+  const cleanName = name.toLowerCase().trim();
+
+  if (boyNames.includes(cleanName)) return "boy";
+  if (girlNames.includes(cleanName)) return "girl";
+
+  // fallback logic
+  if (
+    cleanName.endsWith("a") ||
+    cleanName.endsWith("i") ||
+    cleanName.endsWith("e")
+  ) {
+    return "girl";
+  }
+
+  return "boy"; // default safe
+}
+
