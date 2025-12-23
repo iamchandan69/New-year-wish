@@ -34,12 +34,19 @@ if (token && privateLinks[token]) {
 const nameInput = document.getElementById("nameInput");
 
 if (nameInput) {
-  nameInput.addEventListener("input", () => {
+  const nextBtn = document.getElementById("nextBtn");
+
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => {
     userName = nameInput.value.trim();
-    if (userName.length > 0) {
-      gender = "girl"; // default if unknown
-      startExperience();
+
+    if (userName.length < 2) {
+      alert("Please enter your full name 🤍");
+      return;
     }
+
+    gender = "girl"; // default for manual entry
+    startExperience();
   });
 }
 
