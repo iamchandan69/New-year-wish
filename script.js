@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    gender = "girl";
-    startExperience();
+    gender = detectGenderFromName(userName);
+startExperience();
   });
 
   /* ---------- ENTER KEY ---------- */
