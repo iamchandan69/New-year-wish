@@ -1,59 +1,130 @@
-body {
+/* ================================
+   GLOBAL RESET & BASE SCALE
+================================ */
+* {
   margin: 0;
-  height: 100vh;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+html {
+  font-size: clamp(16px, 2.5vw, 22px);
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(1.05);
-}
-
-.hidden { display: none; }
-
-.center { text-align: center; }
-
-input {
-  padding: 14px 16px;
-  font-size: 22px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-}
-
-button {
-  margin-top: 12px;
-  padding: 8px 20px;
-  border-radius: 20px;
-  border: none;
-  background: black;
-  color: white;
-  cursor: pointer;
-}
-
-#main {
   text-align: center;
+  overflow: hidden;
+}
+
+/* ================================
+   COMMON CONTAINERS
+================================ */
+.hidden {
+  display: none;
+}
+
+section {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem 1.8rem;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================================
+   NAME INPUT SECTION
+================================ */
+#nameBox h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.8rem;
+  font-weight: 600;
+}
+
+#nameInput {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  margin-bottom: 1.4rem;
+}
+
+#nextBtn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff5c8d, #ff8fa3);
+  color: #fff;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#nextBtn:active {
+  transform: scale(0.96);
+}
+
+/* ================================
+   BEAR SECTION
+================================ */
+#main p {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
 }
 
 #bear {
-  width: 260px;
+  width: min(65vw, 280px);
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.35s ease;
 }
 
-#bear:hover {
-  transform: scale(1.05);
+#bear:active {
+  transform: scale(0.92);
 }
 
-.tap {
-  font-size: 18px;
-  opacity: 0.7;
-  margin-bottom: 8px;
+/* ================================
+   LETTER SECTION
+================================ */
+#letter {
+  padding: 3rem 2rem;
 }
 
-.signature {
-  margin-top: 14px;
-  opacity: 0.7;
+#letterText {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+  white-space: pre-line;
 }
 
+#finalLine {
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+/* ================================
+   CONFETTI (PARTY POPPER)
+================================ */
 #confetti-container {
   position: fixed;
   inset: 0;
@@ -64,8 +135,22 @@ button {
 
 .confetti {
   position: absolute;
-  width: 10px;
-  height: 6px;
-  opacity: 0.95;
+  width: clamp(8px, 1vw, 14px);
+  height: clamp(5px, 0.8vw, 9px);
   border-radius: 2px;
+  opacity: 0.95;
 }
+
+/* ================================
+   LARGE SCREENS BOOST
+================================ */
+@media (min-width: 768px) {
+  section {
+    max-width: 520px;
+  }
+
+  #bear {
+    width: 320px;
+  }
+}
+
