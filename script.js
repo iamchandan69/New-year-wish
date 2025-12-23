@@ -1,3 +1,9 @@
+function normalizeGender(g) {
+  if (!g) return null;
+  g = g.toLowerCase().trim();
+  return g === "female" ? "female" : "male";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const nameBox = document.getElementById("nameBox");
