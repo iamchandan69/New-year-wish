@@ -121,18 +121,22 @@ I hope 2026 reminds you
 how special you truly are. ✨`;
 
   finalLine.classList.remove("hidden");
-}
-if (gender === "girl") {
-      letterText.innerText =
+
+} else if (gender === "girl") {
+  letterText.innerText =
 `Happy New Year, ${userName} 🤍
 2026 feels special…
 because you’re part of it.`;
-      finalLine.classList.add("hidden");
-    } else {
-      letterText.innerText =
+
+  finalLine.classList.add("hidden");
+
+} else {
+  letterText.innerText =
 `Happy New Year, ${userName} 🤍
-Some people quietly make the year better,
-just by being in it.`;
+Here’s to new beginnings,
+quiet wins,and moments that matter.
+Whatever comes next,
+may it be kinder than before.`;
     }
   };
 
