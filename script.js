@@ -132,9 +132,13 @@ Wishing you the best always.`;
 
 } else {
   letterText.innerText =
-`Happy New Year, ${userName} 🤍
-😎 New year ho ya purana,
-dosti full on rehni chahiye 💪.`;
+`Happy New Year mere bhai, ${userName}. 🎊
+
+Naya saal aa gaya, par ek cheez jo kabhi nahi badlegi…
+Wo hai humari dosti or Bhaichara on top💪😌
+Chahe saal badle, calendar badle, phones badle,
+par humari bakchodi, late replies, random plans fir cancel karna 😂
+aur “bhai kal milte hain” ka loop same hi rahega 😂.`;
     }
   };
 
