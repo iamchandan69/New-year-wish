@@ -13,14 +13,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let userName = "";
   let gender = "boy";
-
+  const specialGirls = ["ranjeeta", "chuleshwari","ranjita"];
+  
   // 🔹 AUTO GENDER FROM NAME
   function detectGender(name) {
-    const girlEndings = ["a", "i", "e"];
-    const n = name.toLowerCase();
-    if (girlEndings.some(end => n.endsWith(end))) return "girl";
-    return "boy";
-  }
+  const n = name.toLowerCase().trim();
+
+  if (specialGirls.includes(n)) return "specialGirl";
+
+  const girlEndings = ["a", "i", "e"];
+  if (girlEndings.some(end => n.endsWith(end))) return "girl";
+
+  return "boy";
+}
 
   // 🎉 SIDE PARTY POPPER (WIDE + HEAVY BLAST)
   function launchSideBlastConfetti() {
@@ -105,18 +110,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     launchSideBlastConfetti(); // 💥 PARTY POPPER BLAST
 
-    if (gender === "girl") {
-      letterText.innerText =
+    if (gender === "specialGirl") {
+  letterText.innerText =
+`Happy New Year, ${userName} 🤍
+Some people don’t just enter a year…
+they quietly make it unforgettable.
+
+I hope 2026 reminds you
+how special you truly are. ✨`;
+
+  finalLine.classList.remove("hidden");
+
+} else if (gender === "girl") {
+  letterText.innerText =
 `Happy New Year, ${userName} 🤍
 2026 feels special…
 because you’re part of it.`;
-      finalLine.classList.remove("hidden");
-    } else {
-      letterText.innerText =
+
+  finalLine.classList.remove("hidden");
+
+} else {
+  letterText.innerText =
 `Happy New Year, ${userName} 🤍
 Some people quietly make the year better,
 just by being in it.`;
-    }
+}
   };
 
 });
