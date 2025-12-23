@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ===============================
-     PRIVATE ONE-PERSON LINKS
-  ================================ */
-
   const privateLinks = {
     "aivena26": { name: "Aivena", gender: "girl" },
     "rahul22": { name: "Rahul", gender: "boy" }
@@ -18,9 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const main = document.getElementById("main");
   const bearImg = document.getElementById("bear");
 
-  /* ===============================
-     CHECK PRIVATE LINK
-  ================================ */
+  /* ---------- PRIVATE LINK ---------- */
 
   const params = new URLSearchParams(window.location.search);
   const token = params.get("token");
@@ -29,14 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
     userName = privateLinks[token].name;
     gender = privateLinks[token].gender;
     startExperience();
-    return; // stop further input logic
+    return;
   }
 
-  /* ===============================
-     NEXT BUTTON CLICK
-  ================================ */
+  /* ---------- NEXT BUTTON ---------- */
 
-  nextBtn.addEventListener("click", () => {
+  nextBtn.addEventListener("click", (e) => {
+    e.preventDefault(); // 🔥 CRITICAL FIX
+
     userName = nameInput.value.trim();
 
     if (userName.length < 2) {
@@ -44,38 +38,31 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    gender = "girl"; // default for manual entry
+    gender = "girl";
     startExperience();
   });
 
-  /* ===============================
-     ENTER KEY SUPPORT
-  ================================ */
+  /* ---------- ENTER KEY ---------- */
 
   nameInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       nextBtn.click();
     }
   });
 
-  /* ===============================
-     START EXPERIENCE
-  ================================ */
+  /* ---------- START EXPERIENCE ---------- */
 
   function startExperience() {
     nameBox.style.display = "none";
     main.classList.remove("hidden");
 
-    if (gender === "girl") {
-      bearImg.src = "bear-girl.png";
-    } else {
-      bearImg.src = "bear-boy.png";
-    }
+    bearImg.src = gender === "girl"
+      ? "bear-girl.png"
+      : "bear-boy.png";
   }
 
-  /* ===============================
-     ENVELOPE CLICK → LETTER
-  ================================ */
+  /* ---------- ENVELOPE ---------- */
 
   document.getElementById("envelope").addEventListener("click", () => {
     main.style.display = "none";
