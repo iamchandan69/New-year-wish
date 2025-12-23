@@ -125,18 +125,16 @@ how special you truly are. ✨`;
 } else if (gender === "girl") {
   letterText.innerText =
 `Happy New Year, ${userName} 🤍
-2026 feels special…
-because you’re part of it.`;
+💫 New year, fresh start, happy heart.
+Wishing you the best always.`;
 
   finalLine.classList.add("hidden");
 
 } else {
   letterText.innerText =
 `Happy New Year, ${userName} 🤍
-Here’s to new beginnings,
-quiet wins,and moments that matter.
-Whatever comes next,
-may it be kinder than before.`;
+😎 New year ho ya purana,
+dosti full on rehni chahiye 💪.`;
     }
   };
 
