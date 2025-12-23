@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("confetti-container");
     const colors = ["#ff5c8d", "#ffc83d", "#7afcff", "#b983ff", "#ffffff"];
 
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 100; i++) {
       blast("left");
       blast("right");
     }
