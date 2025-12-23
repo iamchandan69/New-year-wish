@@ -123,7 +123,13 @@ how special you truly are. ✨`;
   finalLine.classList.remove("hidden");
 
 } else if (gender === "girl") {
-  letterText.innerText =
+  letterText.innerText = getRandomWish(girlWishes);
+  finalLine.classList.add("hidden");
+} else {
+  letterText.innerText = getRandomWish(boyWishes);
+  finalLine.classList.add("hidden");
+}
+const girlWishes = [
 `Happy New Year, ${userName} 🤍
 ✨ Wishing you a year filled with happiness and good moments.`,
 
@@ -135,12 +141,13 @@ May this year bring you joy, peace, and lots of smiles.`,
 
 `Happy New Year, ${userName} 🤍
 💫 New year, fresh start, happy heart.
-Wishing you the best always.`;
-
+Wishing you the best always.`
+];
   finalLine.classList.add("hidden");
 
 } else {
   letterText.innerText =
+const boyWishes = [
 `🎊 Is New Year bhi bolenge “iss saal serious ho jayenge”
 Aur 1 week me bhool jayenge 🤣
 Happy New Year, ${userName}.`,
@@ -160,9 +167,9 @@ Happy New Year, ${userName} .`,
 
 `🤣 Is saal bhi log bolenge “main badal gaya hoon”
 par aadatein wahi purani 😌
-Happy New Year, ${userName}.`;
-    }
-  };
+Happy New Year, ${userName}.`
+];
+
 function getRandomWish(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
