@@ -1,121 +1,79 @@
-/* =====================
-   GLOBAL BASE SETUP
-===================== */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: 16px;
-}
-
 body {
-  font-family: "Poppins", sans-serif;
-  background: #0e0e0e;
-  color: #fff;
-  min-height: 100vh;
+  margin: 0;
+  height: 100vh;
+  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* =====================
-   COMMON UTIL
-===================== */
-
-.hidden {
-  display: none;
 }
 
 .center {
   text-align: center;
 }
 
-/* =====================
-   NAME INPUT SCREEN
-===================== */
-
-#nameBox {
-  width: min(90%, 420px);
-  background: #161616;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border-radius: 16px;
+/* Enter your name text */
+.name-title {
+  font-size: clamp(16px, 2.5vw, 28px);
   text-align: center;
+  margin-bottom: 12px;
 }
 
-#nameBox h2 {
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
-  margin-bottom: 1rem;
-}
-
+/* Name input box */
 #nameInput {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  font-size: clamp(1rem, 3.5vw, 1.2rem);
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  margin-bottom: 1rem;
+  font-size: clamp(14px, 2.2vw, 22px);
+  width: clamp(180px, 50%, 300px);
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
 }
 
+/* Next button */
 #nextBtn {
-  padding: 0.7rem 2rem;
-  font-size: clamp(1rem, 3.5vw, 1.2rem);
-  border-radius: 999px;
+  margin-top: 12px;
+  font-size: clamp(14px, 2.2vw, 20px);
+  padding: clamp(8px, 1.5vw, 16px) clamp(16px, 3vw, 32px);
+  border-radius: 20px;
   border: none;
-  background: #ff5c8d;
-  color: #fff;
+  background: black;
+  color: white;
   cursor: pointer;
 }
 
-/* =====================
-   BEAR SCREEN
-===================== */
-
+/* Main screen with bear */
 #main {
   text-align: center;
 }
 
-#main p {
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  margin-bottom: 1rem;
-}
-
 #bear {
-  width: clamp(140px, 45vw, 260px);
+  width: clamp(180px, 25vw, 300px);
   cursor: pointer;
+  transition: transform 0.3s;
 }
 
-/* =====================
-   LETTER / FINAL WISH
-===================== */
+#bear:hover {
+  transform: scale(1.05);
+}
 
-#letter {
-  width: min(92%, 500px);
-  background: #161616;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border-radius: 20px;
+/* Top tap text */
+.tap {
+  font-size: clamp(12px, 1.8vw, 20px);
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+/* Bottom text / letter */
+.bottom-text, #letterText {
+  font-size: clamp(14px, 2.2vw, 22px);
   text-align: center;
 }
 
-#letterText {
-  font-size: clamp(1.1rem, 4vw, 1.5rem);
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
+.signature, #finalLine {
+  margin-top: 14px;
+  opacity: 0.7;
+  font-size: clamp(12px, 1.8vw, 18px);
 }
 
-#finalLine {
-  font-size: clamp(0.9rem, 3vw, 1.1rem);
-  color: #ffb3c8;
-}
-
-/* =====================
-   CONFETTI
-===================== */
-
+/* Confetti container */
 #confetti-container {
   position: fixed;
   inset: 0;
@@ -126,22 +84,8 @@ body {
 
 .confetti {
   position: absolute;
-  width: 12px;
-  height: 7px;
+  width: clamp(8px, 0.8vw, 15px);
+  height: clamp(6px, 0.6vw, 12px);
   border-radius: 2px;
   opacity: 0.95;
-}
-
-/* =====================
-   LARGE SCREEN BOOST
-===================== */
-
-@media (min-width: 900px) {
-  html {
-    font-size: 18px;
-  }
-
-  #bear {
-    width: 280px;
-  }
 }
