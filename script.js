@@ -64,7 +64,6 @@ startExperience();
 
   /* ---------- ENVELOPE ---------- */
 
-  document.getElementById("envelope").addEventListener("click", () => {
     main.style.display = "none";
     document.getElementById("letter").classList.remove("hidden");
 
@@ -119,3 +118,24 @@ function detectGenderFromName(name) {
   return "boy"; // default safe
 }
 
+bearImg.addEventListener("click", () => {
+  main.style.display = "none";
+  document.getElementById("letter").classList.remove("hidden");
+
+  const girlText =
+`Happy New Year, ${userName} 🤍
+2026 feels special…
+because you’re part of it.`;
+
+  const boyText =
+`Happy New Year, ${userName} 🤍
+Some people quietly make the year better,
+just by being in it.`;
+
+  document.getElementById("letterText").innerText =
+    gender === "girl" ? girlText : boyText;
+
+  if (gender === "girl") {
+    document.getElementById("finalLine").classList.remove("hidden");
+  }
+});
