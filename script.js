@@ -129,48 +129,18 @@ how special you truly are. ✨`;
   letterText.innerText = getRandomWish(boyWishes);
   finalLine.classList.add("hidden");
 }
-const girlWishes = [
+if (gender === "girl") {
+      letterText.innerText =
 `Happy New Year, ${userName} 🤍
-✨ Wishing you a year filled with happiness and good moments.`,
-
-`Happy New Year, ${userName} 🌸
-May this year bring you joy, peace, and lots of smiles.`,
-
-`Happy New Year, ${userName} 
-🌼 May the New Year be gentle, kind, and beautiful for you.`,
-
+2026 feels special…
+because you’re part of it.`;
+      finalLine.classList.add("hidden");
+    } else {
+      letterText.innerText =
 `Happy New Year, ${userName} 🤍
-💫 New year, fresh start, happy heart.
-Wishing you the best always.`
-];
-  finalLine.classList.add("hidden");
+Some people quietly make the year better,
+just by being in it.`;
+    }
+  };
 
-} else {
-  letterText.innerText =
-const boyWishes = [
-`🎊 Is New Year bhi bolenge “iss saal serious ho jayenge”
-Aur 1 week me bhool jayenge 🤣
-Happy New Year, ${userName}.`,
-
-`😎 New year ho ya purana,
-dosti full on rehni chahiye 💪
-Happy New Year, ${userName}.`,
-
-`🤣 May your WiFi be strong,
-your boss be kind,
-aur weekends thode zyada ho 😎
-Happy New Year, ${userName} .`,
-
-`🎊 Iss saal bhi sabko bolenge “early sone jaa rahe hain”
-aur 3 baje tak reels dekhte rahenge 😂
-Happy New Year, ${userName} .`,
-
-`🤣 Is saal bhi log bolenge “main badal gaya hoon”
-par aadatein wahi purani 😌
-Happy New Year, ${userName}.`
-];
-
-function getRandomWish(list) {
-  return list[Math.floor(Math.random() * list.length)];
-}
 });
