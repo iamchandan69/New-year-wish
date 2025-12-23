@@ -1,70 +1,63 @@
-/* ================================
-   GLOBAL RESET & BASE SCALE
-================================ */
+/* =========================
+   GLOBAL RESET
+========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", system-ui, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
+/* =========================
+   AUTO SCALE ROOT
+========================= */
+/*
+  clamp(min, preferred, max)
+  Automatically scales on screen size
+*/
 html {
-  font-size: clamp(16px, 2.5vw, 22px);
+  font-size: clamp(16px, 4vw, 22px);
 }
 
 body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: #0f0f14;
   color: #ffffff;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  overflow: hidden;
+  justify-content: center;
 }
 
-/* ================================
-   COMMON CONTAINERS
-================================ */
-.hidden {
-  display: none;
-}
-
-section {
+/* =========================
+   COMMON CENTER WRAPPER
+========================= */
+.container {
   width: 100%;
-  max-width: 420px;
-  padding: 2.5rem 1.8rem;
-  animation: fadeIn 0.8s ease;
+  max-width: 480px;
+  padding: 1.5rem;
+  text-align: center;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* =========================
+   NAME INPUT SCREEN
+========================= */
+#nameBox {
+  width: 100%;
 }
 
-/* ================================
-   NAME INPUT SECTION
-================================ */
 #nameBox h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.8rem;
-  font-weight: 600;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  margin-bottom: 1.2rem;
 }
 
 #nameInput {
   width: 100%;
-  padding: 1rem 1.2rem;
+  padding: 1rem;
   font-size: 1.2rem;
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
   outline: none;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 #nextBtn {
@@ -73,58 +66,66 @@ section {
   font-size: 1.2rem;
   border-radius: 14px;
   border: none;
+  background: #ff5c8d;
+  color: white;
   cursor: pointer;
-  background: linear-gradient(135deg, #ff5c8d, #ff8fa3);
-  color: #fff;
-  font-weight: 600;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 #nextBtn:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
 }
 
-/* ================================
-   BEAR SECTION
-================================ */
+/* =========================
+   BEAR SCREEN
+========================= */
+#main {
+  text-align: center;
+}
+
 #main p {
-  font-size: 1.2rem;
-  margin-bottom: 1.2rem;
-  opacity: 0.9;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  margin-bottom: 1rem;
 }
 
 #bear {
-  width: min(65vw, 280px);
+  width: clamp(200px, 70vw, 320px);
   cursor: pointer;
-  transition: transform 0.35s ease;
+  transition: transform 0.3s ease;
 }
 
 #bear:active {
-  transform: scale(0.92);
+  transform: scale(0.95);
 }
 
-/* ================================
-   LETTER SECTION
-================================ */
+/* =========================
+   LETTER / FINAL WISH
+========================= */
 #letter {
-  padding: 3rem 2rem;
+  text-align: center;
 }
 
 #letterText {
-  font-size: 1.4rem;
+  font-size: clamp(1.3rem, 4.5vw, 1.8rem);
   line-height: 1.6;
-  margin-bottom: 1.6rem;
   white-space: pre-line;
 }
 
 #finalLine {
-  font-size: 1.1rem;
-  opacity: 0.85;
+  margin-top: 1.2rem;
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  opacity: 0.9;
 }
 
-/* ================================
-   CONFETTI (PARTY POPPER)
-================================ */
+/* =========================
+   HIDDEN CLASS
+========================= */
+.hidden {
+  display: none;
+}
+
+/* =========================
+   CONFETTI
+========================= */
 #confetti-container {
   position: fixed;
   inset: 0;
@@ -135,22 +136,25 @@ section {
 
 .confetti {
   position: absolute;
-  width: clamp(8px, 1vw, 14px);
-  height: clamp(5px, 0.8vw, 9px);
-  border-radius: 2px;
+  width: clamp(8px, 2vw, 14px);
+  height: clamp(6px, 1.5vw, 10px);
+  border-radius: 3px;
   opacity: 0.95;
 }
 
-/* ================================
-   LARGE SCREENS BOOST
-================================ */
+/* =========================
+   DESKTOP IMPROVEMENT
+========================= */
 @media (min-width: 768px) {
-  section {
-    max-width: 520px;
+  body {
+    background: radial-gradient(circle at top, #1b1b2a, #0f0f14);
+  }
+
+  .container {
+    max-width: 600px;
   }
 
   #bear {
-    width: 320px;
+    width: 360px;
   }
 }
-
