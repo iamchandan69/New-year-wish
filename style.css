@@ -101,3 +101,144 @@ body {
   border-radius: 2px;
   opacity: 0.95;
 }
+
+/* ===== GLOBAL CINEMATIC BACKGROUND ===== */
+body {
+  background: radial-gradient(
+    circle at top,
+    #1a1f3c 0%,
+    #0b0f1a 45%,
+    #06080f 100%
+  );
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Smooth screen transitions */
+#nameBox,
+#main,
+#letter {
+  animation: fadeIn 0.9s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== GLASS NAME BOX ===== */
+#nameBox {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 40px 30px;
+  width: min(90%, 380px);
+  box-shadow: 0 0 40px rgba(255, 92, 141, 0.18);
+}
+
+/* Title glow */
+.name-title {
+  font-size: 26px;
+  letter-spacing: 0.6px;
+  text-shadow: 0 0 12px rgba(255, 92, 141, 0.6);
+}
+
+/* Input glow */
+#nameInput {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+#nameInput::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#nameInput:focus {
+  border-color: #ff5c8d;
+  box-shadow: 0 0 18px rgba(255, 92, 141, 0.6);
+}
+
+/* Button premium hover */
+#nextBtn {
+  background: linear-gradient(135deg, #ff5c8d, #ff88b0);
+  box-shadow: 0 0 22px rgba(255, 92, 141, 0.6);
+}
+
+#nextBtn:hover {
+  transform: scale(1.06);
+}
+
+/* Floating animation */
+#bear {
+  animation: floatBear 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.35));
+}
+
+@keyframes floatBear {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Tap text pulse */
+.tap {
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+/* Letter container */
+#letter {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+/* Letter text style */
+#letterText {
+  font-size: clamp(20px, 2.6vw, 32px);
+  line-height: 1.7;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+  animation: textReveal 1.4s ease forwards;
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Signature fade */
+.signature {
+  animation: signatureFade 1.8s ease forwards;
+}
+
+@keyframes signatureFade {
+  from { opacity: 0; }
+  to { opacity: 0.6; }
+}
+
+.confetti {
+  border-radius: 50%;
+  opacity: 0.85;
+  filter: blur(0.3px);
+}
