@@ -110,36 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 🔹 BEAR CLICK → FINAL WISH
   bear.onclick = () => {
-  main.style.display = "none";
-  letter.classList.remove("hidden");
+    main.style.display = "none";
+    letter.classList.remove("hidden");
 
-  const bearAnim = document.getElementById("bearAnim");
-  const five = document.getElementById("five");
-  const envelope = document.getElementById("envelope");
-  const wishCard = document.getElementById("wishCard");
+    launchSideBlastConfetti(); // 💥 PARTY POPPER BLAST
 
-  // Bear walk in
-  setTimeout(() => {
-    bearAnim.style.left = "35%";
-  }, 500);
-
-  // Kick 5
-  setTimeout(() => {
-    five.style.transition = "1s";
-    five.style.transform = "translateY(200px)";
-  }, 3000);
-
-  // Envelope appear
-  setTimeout(() => {
-    envelope.style.opacity = "1";
-  }, 4500);
-
-  // Final wish
-  setTimeout(() => {
-    wishCard.classList.remove("hidden");
-    launchSideBlastConfetti();
-  }, 6500);
-    
     if (gender === "specialGirl") {
   letterText.innerText =
 `Happy New Year, ${userName} 🤍
