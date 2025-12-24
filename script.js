@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let userName = "";
   let gender = "boy";
   const specialGirls = ["ranjeeta", "chuleshwari","ranjita"];
-  const forceBoyNames = ["chandramani", "shivmani", "harimani"];
-  
+  const forceBoyNames = ["chandramani", "shivmani","hirendra","harimani"];
+  const forceGirlNames = ["suman","kirti","jyoti","kiran","kajal","Kiran","Poonam","Suman","Komal","Geet","Payal","Kanak","Shagun","Nupur","Gunjan","Heer","Kusum","Neelam","Sonal","Sejal","Dimple","Hetal","chanchal"];
   
   // 🔹 AUTO GENDER FROM NAME
   function detectGender(name) {
@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (specialGirls.includes(n)) return "specialGirl";
   if (forceBoyNames.includes(n)) return "boy";
-
+  if (forceGirlNames.includes(n)) return "girl";
+    
   const girlEndings = ["a", "i", "e"];
   if (girlEndings.some(end => n.endsWith(end))) return "girl";
 
