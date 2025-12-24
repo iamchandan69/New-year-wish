@@ -139,8 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     wishCard.classList.remove("hidden");
     launchSideBlastConfetti();
   }, 6500);
-};
-
+    
     if (gender === "specialGirl") {
   letterText.innerText =
 `Happy New Year, ${userName} 🤍
