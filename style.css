@@ -101,3 +101,92 @@ body {
   border-radius: 2px;
   opacity: 0.95;
 }
+
+#night {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, #0b1d3a, #000);
+  overflow: hidden;
+  z-index: 1;
+}
+
+#stars {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.4;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to { opacity: 0.6; }
+}
+
+#moon {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 40px #fff;
+}
+
+#ground {
+  position: absolute;
+  bottom: 0;
+  height: 120px;
+  width: 100%;
+  background: linear-gradient(#0b2b14, #041b0a);
+}
+
+#year {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  font-size: 72px;
+  color: white;
+  letter-spacing: 10px;
+  z-index: 2;
+}
+
+#bearAnim {
+  position: absolute;
+  bottom: 90px;
+  left: -150px;
+  width: 160px;
+  z-index: 3;
+  transition: left 2.5s linear;
+}
+
+#envelope {
+  position: absolute;
+  font-size: 48px;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  z-index: 4;
+  animation: floatUp 3s ease forwards;
+}
+
+@keyframes floatUp {
+  from { transform: translate(-50%, 60px); opacity: 0; }
+  to { transform: translate(-50%, -40px); opacity: 1; }
+}
+
+#wishCard {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  color: #fff;
+}
