@@ -1,17 +1,31 @@
-/* ===== RESET ===== */
+/* =========================
+   RESET
+========================= */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* =========================
+   GLOBAL CINEMATIC THEME
+========================= */
 body {
   font-family: "Georgia", serif;
   height: 100vh;
-  background: #fff;
+  background: radial-gradient(
+    circle at top,
+    #1a1f3c 0%,
+    #0b0f1a 45%,
+    #06080f 100%
+  );
+  color: #ffffff;
+  overflow: hidden;
 }
 
-/* ===== COMMON FULL SCREEN LAYOUT ===== */
+/* =========================
+   FULLSCREEN LAYOUT
+========================= */
 #nameBox,
 #main,
 #letter {
@@ -22,105 +36,13 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 14px;
-  background: #fff;
-}
-
-/* ===== HIDDEN STATE ===== */
-.hidden {
-  display: none !important;
-}
-
-/* ===== ENTER NAME SCREEN ===== */
-.name-title {
-  font-size: clamp(18px, 2.5vw, 30px);
-  margin-bottom: 8px;
-}
-
-#nameInput {
-  width: clamp(220px, 50vw, 320px);
-  padding: 14px 20px;
-  font-size: clamp(14px, 2vw, 20px);
-  border-radius: 25px;
-  border: 1px solid #ccc;
-  outline: none;
-}
-
-#nextBtn {
-  padding: 12px 32px;
-  font-size: clamp(14px, 2vw, 18px);
-  border-radius: 25px;
-  border: none;
-  background: #000;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* ===== BEAR SCREEN ===== */
-.tap {
-  font-size: clamp(12px, 1.8vw, 18px);
-  opacity: 0.6;
-}
-
-#bear {
-  width: clamp(180px, 28vw, 320px);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-#bear:hover {
-  transform: scale(1.05);
-}
-
-/* ===== LETTER SCREEN ===== */
-#letterText {
-  font-size: clamp(18px, 2.5vw, 28px);
-  line-height: 1.4;
-  max-width: 80%;
-}
-
-#finalLine {
-  font-size: clamp(12px, 1.6vw, 16px);
-  opacity: 0.6;
-  margin-top: 10px;
-}
-
-/* ===== CONFETTI ===== */
-#confetti-container {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 999;
-}
-
-.confetti {
-  position: absolute;
-  width: clamp(8px, 0.8vw, 14px);
-  height: clamp(6px, 0.6vw, 10px);
-  border-radius: 2px;
-  opacity: 0.95;
-}
-
-/* ===== GLOBAL CINEMATIC BACKGROUND ===== */
-body {
-  background: radial-gradient(
-    circle at top,
-    #1a1f3c 0%,
-    #0b0f1a 45%,
-    #06080f 100%
-  );
-  color: #fff;
-  overflow: hidden;
-}
-
-/* Smooth screen transitions */
-#nameBox,
-#main,
-#letter {
+  gap: 16px;
   animation: fadeIn 0.9s ease forwards;
 }
 
+/* =========================
+   SCREEN FADE ANIMATION
+========================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -132,29 +54,41 @@ body {
   }
 }
 
-/* ===== GLASS NAME BOX ===== */
+/* =========================
+   HIDDEN STATE
+========================= */
+.hidden {
+  display: none !important;
+}
+
+/* =========================
+   NAME INPUT — GLASS UI
+========================= */
 #nameBox {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
-  padding: 40px 30px;
+  border-radius: 26px;
+  padding: 42px 32px;
   width: min(90%, 380px);
-  box-shadow: 0 0 40px rgba(255, 92, 141, 0.18);
+  box-shadow: 0 0 42px rgba(255, 92, 141, 0.22);
 }
 
-/* Title glow */
 .name-title {
-  font-size: 26px;
+  font-size: clamp(20px, 2.6vw, 30px);
   letter-spacing: 0.6px;
-  text-shadow: 0 0 12px rgba(255, 92, 141, 0.6);
+  text-shadow: 0 0 14px rgba(255, 92, 141, 0.7);
 }
 
-/* Input glow */
 #nameInput {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: clamp(14px, 2vw, 18px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  color: #ffffff;
+  outline: none;
 }
 
 #nameInput::placeholder {
@@ -166,20 +100,51 @@ body {
   box-shadow: 0 0 18px rgba(255, 92, 141, 0.6);
 }
 
-/* Button premium hover */
+/* =========================
+   NEXT BUTTON
+========================= */
 #nextBtn {
+  margin-top: 6px;
+  padding: 12px 36px;
+  font-size: clamp(14px, 2vw, 18px);
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
   background: linear-gradient(135deg, #ff5c8d, #ff88b0);
-  box-shadow: 0 0 22px rgba(255, 92, 141, 0.6);
+  box-shadow: 0 0 24px rgba(255, 92, 141, 0.6);
+  transition: transform 0.25s ease;
 }
 
 #nextBtn:hover {
   transform: scale(1.06);
 }
 
-/* Floating animation */
+/* =========================
+   BEAR SCREEN
+========================= */
+.tap {
+  font-size: clamp(12px, 1.8vw, 18px);
+  opacity: 0.6;
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
 #bear {
+  width: clamp(180px, 30vw, 340px);
+  cursor: pointer;
   animation: floatBear 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.35));
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+  transition: transform 0.3s ease;
+}
+
+#bear:hover {
+  transform: scale(1.05);
 }
 
 @keyframes floatBear {
@@ -191,28 +156,19 @@ body {
   }
 }
 
-/* Tap text pulse */
-.tap {
-  animation: pulse 1.6s infinite;
-}
-
-@keyframes pulse {
-  0% { opacity: 0.4; }
-  50% { opacity: 1; }
-  100% { opacity: 0.4; }
-}
-
-/* Letter container */
+/* =========================
+   LETTER SCREEN
+========================= */
 #letter {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.38);
   backdrop-filter: blur(12px);
 }
 
-/* Letter text style */
 #letterText {
   font-size: clamp(20px, 2.6vw, 32px);
   line-height: 1.7;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+  max-width: 80%;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
   animation: textReveal 1.4s ease forwards;
 }
 
@@ -227,8 +183,10 @@ body {
   }
 }
 
-/* Signature fade */
 .signature {
+  font-size: clamp(12px, 1.6vw, 16px);
+  opacity: 0.6;
+  margin-top: 12px;
   animation: signatureFade 1.8s ease forwards;
 }
 
@@ -237,7 +195,21 @@ body {
   to { opacity: 0.6; }
 }
 
+/* =========================
+   CONFETTI
+========================= */
+#confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
 .confetti {
+  position: absolute;
+  width: clamp(8px, 0.8vw, 14px);
+  height: clamp(6px, 0.6vw, 10px);
   border-radius: 50%;
   opacity: 0.85;
   filter: blur(0.3px);
