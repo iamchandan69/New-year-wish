@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let userName = "";
   let gender = "boy";
   const specialGirls = ["ranjeeta", "chuleshwari","ranjita"];
-  const forceBoyNames = ["chandramani", "shivmani","hirendra","Arya","Rudra","Shiva","Ravi","Adi","Rishi","Hari","Jai","harimani"];
-  const forceGirlNames = ["suman","kirti","jyoti","kiran","kajal","Kiran","Poonam","Suman","Komal","Geet","Payal","Kanak","Shagun","Nupur","Gunjan","Heer","Kusum","Neelam","Sonal","Sejal","Dimple","Hetal","chanchal"];
+  const forceBoyNames = ["chandramani", "shivmani","hirendra","arya","rudra","shiva","ravi","adi","rishi","hari","jai","harimani"];
+  const forceGirlNames = ["suman","kirti","jyoti","kiran","kajal","kiran","poonam","suman","komal","geet","payal","kanak","shagun","nupur","gunjan","heer","kusum","neelam","sonal","sejal","dimple","hetal","chanchal"];
   
   // 🔹 AUTO GENDER FROM NAME
   function detectGender(name) {
