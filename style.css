@@ -32,11 +32,9 @@ body {
   position: fixed;
   inset: 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 16px;
   animation: fadeIn 0.9s ease forwards;
 }
 
@@ -55,31 +53,38 @@ body {
 }
 
 /* =========================
-   HIDDEN STATE
+   HIDDEN
 ========================= */
 .hidden {
   display: none !important;
 }
 
 /* =========================
-   NAME INPUT — GLASS UI
+   NAME SCREEN (CENTER FIXED)
 ========================= */
 #nameBox {
-  background: rgba(255, 255, 255, 0.05);
+  flex-direction: column;
+}
+
+.name-card {
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 26px;
   padding: 42px 32px;
   width: min(90%, 380px);
-  box-shadow: 0 0 42px rgba(255, 92, 141, 0.22);
+  box-shadow: 0 0 42px rgba(255, 92, 141, 0.25);
 }
 
 .name-title {
   font-size: clamp(20px, 2.6vw, 30px);
-  letter-spacing: 0.6px;
+  margin-bottom: 10px;
   text-shadow: 0 0 14px rgba(255, 92, 141, 0.7);
 }
 
+/* =========================
+   INPUT
+========================= */
 #nameInput {
   width: 100%;
   padding: 14px 20px;
@@ -101,10 +106,10 @@ body {
 }
 
 /* =========================
-   NEXT BUTTON
+   BUTTON
 ========================= */
 #nextBtn {
-  margin-top: 6px;
+  margin-top: 14px;
   padding: 12px 36px;
   font-size: clamp(14px, 2vw, 18px);
   border-radius: 25px;
@@ -123,9 +128,16 @@ body {
 /* =========================
    BEAR SCREEN
 ========================= */
+#main {
+  flex-direction: column;
+  position: fixed;
+}
+
+/* Tap text (TOP) */
 .tap {
   font-size: clamp(12px, 1.8vw, 18px);
-  opacity: 0.6;
+  opacity: 0.7;
+  margin-bottom: 16px;
   animation: pulse 1.6s infinite;
 }
 
@@ -135,6 +147,7 @@ body {
   100% { opacity: 0.4; }
 }
 
+/* Bear */
 #bear {
   width: clamp(180px, 30vw, 340px);
   cursor: pointer;
@@ -148,12 +161,18 @@ body {
 }
 
 @keyframes floatBear {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-14px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+/* Bottom emotional text */
+.bottom-text {
+  position: absolute;
+  bottom: 32px;
+  font-size: clamp(14px, 2vw, 20px);
+  opacity: 0.75;
+  max-width: 80%;
+  text-align: center;
 }
 
 /* =========================
@@ -162,6 +181,7 @@ body {
 #letter {
   background: rgba(0, 0, 0, 0.38);
   backdrop-filter: blur(12px);
+  flex-direction: column;
 }
 
 #letterText {
