@@ -1,4 +1,4 @@
-/* ===== RESET ===== */
+/* ========== RESET ========== */
 * {
   margin: 0;
   padding: 0;
@@ -6,34 +6,44 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* ===== BODY ===== */
+/* ========== BODY ========== */
 body {
-  min-height: 100vh;
+  height: 100vh;
   background: radial-gradient(circle at top, #121a2f, #05070d);
-  color: #ffffff;
-  display: flex;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* ========== APP WRAPPER ========== */
+.app {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* ========== ALL PAGES ========== */
+.page {
+  position: absolute;
+  inset: 0;
+  display: none;                 /* 🔴 IMPORTANT */
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
-}
-
-/* ===== MAIN CONTAINER ===== */
-.container {
-  width: 100%;
-  max-width: 420px;
-  padding: 24px;
+  flex-direction: column;
   text-align: center;
+  padding: 24px;
+  animation: fadeUp 0.7s ease;
 }
 
-/* ===== PAGE FADE ANIMATION ===== */
-.page {
-  animation: fadeUp 0.8s ease forwards;
+/* ONLY ACTIVE PAGE */
+.page.active {
+  display: flex;                 /* ✅ only one page visible */
 }
 
+/* ========== ANIMATION ========== */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -41,17 +51,17 @@ body {
   }
 }
 
-/* ===== HEADING TEXT ===== */
+/* ========== TITLE ========== */
 .title {
   font-size: 20px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   opacity: 0.9;
 }
 
-/* ===== INPUT FIX (PROBLEM 1 SOLVED) ===== */
+/* ========== INPUT FIX ========== */
 input[type="text"] {
   width: 100%;
-  max-width: 320px;          /* ✅ screen ke corner tak nahi jayega */
+  max-width: 300px;
   padding: 14px 18px;
   border-radius: 30px;
   border: 1px solid rgba(255,255,255,0.25);
@@ -59,52 +69,30 @@ input[type="text"] {
   color: #fff;
   font-size: 15px;
   outline: none;
-  margin: 0 auto 16px auto;  /* ✅ center me rahega */
-  display: block;
+  margin-bottom: 16px;
   backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
 }
 
 input::placeholder {
   color: rgba(255,255,255,0.6);
 }
 
-input:focus {
-  border-color: #ff6b9a;
-  box-shadow: 0 0 12px rgba(255,107,154,0.45);
-}
-
-/* ===== BUTTON ===== */
+/* ========== BUTTON ========== */
 button {
-  padding: 12px 34px;
+  padding: 12px 36px;
   border-radius: 30px;
   border: none;
   background: linear-gradient(135deg, #ff6b9a, #ff3f7f);
   color: #fff;
   font-size: 15px;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(255, 63, 127, 0.45);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 24px rgba(255, 63, 127, 0.45);
 }
 
-button:hover {
-  transform: scale(1.06);
-  box-shadow: 0 12px 26px rgba(255, 63, 127, 0.6);
-}
-
-/* ===== BEAR PAGE FIX (PROBLEM 2 SOLVED) ===== */
-.bear-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;                 /* ✅ bear aur text ke beech spacing */
-  min-height: 100vh;
-}
-
-/* ===== BEAR IMAGE ===== */
+/* ========== BEAR PAGE ========== */
 .bear-img {
   width: 190px;
+  margin-bottom: 16px;
   animation: float 3.5s ease-in-out infinite;
 }
 
@@ -113,40 +101,29 @@ button:hover {
   50% { transform: translateY(-12px); }
 }
 
-/* ===== BEAR TEXT (NOW UNDER BEAR, NOT SCREEN BOTTOM) ===== */
-.bear-text {
-  font-size: 17px;
-  opacity: 0.9;
-  text-align: center;
-  padding: 0 12px;
-  animation: fadeText 1.4s ease forwards;
-}
-
-@keyframes fadeText {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 0.9;
-    transform: translateY(0);
-  }
-}
-
-/* ===== TAP TEXT ===== */
 .tap-text {
   font-size: 14px;
   opacity: 0.7;
   margin-bottom: 8px;
 }
 
-/* ===== MOBILE EXTRA SAFETY ===== */
+.bear-text {
+  font-size: 17px;
+  opacity: 0.9;
+  max-width: 300px;
+}
+
+/* ========== FINAL MESSAGE PAGE ========== */
+.final-text {
+  font-size: 17px;
+  max-width: 320px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* ========== MOBILE SAFETY ========== */
 @media (max-width: 380px) {
   .bear-img {
     width: 165px;
-  }
-
-  .bear-text {
-    font-size: 16px;
   }
 }
