@@ -2,34 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Just For You 🤍</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
-  <div id="confetti-container"></div>
 <body>
 
-<!-- NAME BOX -->
-<div id="nameBox" class="center">
-  <p class="name-title">Enter your name</p>
-  <input id="nameInput" type="text" placeholder="Your name…" />
-  <button id="nextBtn" type="button">Next</button>
-</div>
+  <div class="background-anim">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
-<!-- BEAR SCREEN -->
-<div id="main" class="hidden">
-  <div class="tap">Tap here</div>
-  <img id="bear" src="" alt="Bear">
-  <p class="bottom-text">Hey… I didn’t know how else to say this.</p>
-</div>
+  <div id="confetti-container"></div>
 
-<!-- LETTER -->
-<div id="letter" class="hidden">
-  <p id="letterText"></p>
-  <p id="finalLine" class="signature hidden">
-    — and I hope this made you smile, even for a second.
-  </p>
-</div>
+  <div class="glass-container">
+    
+    <div id="nameBox" class="content-box">
+      <h1 class="main-title">2026 Awaits</h1>
+      <p class="sub-title">So login here to see more.</p>
+      
+      <div class="input-group">
+        <input id="nameInput" type="text" required />
+        <label for="nameInput">Enter your name</label>
+      </div>
+      
+      <button id="nextBtn" type="button">Continue ➔</button>
+    </div>
 
-<script src="script.js"></script>
+    <div id="main" class="content-box hidden">
+      <div class="tap-hint">Tap the "💌" 🤍</div>
+      <div class="image-wrapper">
+        <img id="bear" src="" alt="Bear">
+      </div>
+      <p class="bottom-text">Hey… I didn’t know how else to say this.</p>
+    </div>
+
+    <div id="letter" class="content-box hidden">
+      <div class="envelope-wrapper">
+        <div id="envelope" class="envelope">
+          <div class="front flap"></div>
+          <div class="front pocket"></div>
+          <div class="letter-content">
+            <div class="paper-text">
+               <p id="letterText"></p>
+               <p id="finalLine" class="signature hidden">— and I hope this made you smile, even for a second.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
