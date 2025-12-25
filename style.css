@@ -1,4 +1,4 @@
-/* ========== RESET ========== */
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
@@ -6,62 +6,57 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* ========== BODY ========== */
+/* ================= BODY ================= */
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
-  height: 100vh;
   background: radial-gradient(circle at top, #121a2f, #05070d);
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
 
-/* ========== APP WRAPPER ========== */
-.app {
-  position: relative;
+/* ================= FORCE SINGLE SCREEN ================= */
+body > * {
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
-/* ========== ALL PAGES ========== */
-.page {
-  position: absolute;
-  inset: 0;
-  display: none;                 /* 🔴 IMPORTANT */
+/* ================= PAGE FIX ================= */
+.page,
+.container,
+.screen {
+  width: 100%;
+  height: 100%;
+  display: none;                 /* hide all */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   text-align: center;
   padding: 24px;
-  animation: fadeUp 0.7s ease;
 }
 
-/* ONLY ACTIVE PAGE */
-.page.active {
-  display: flex;                 /* ✅ only one page visible */
+/* ACTIVE PAGE ONLY */
+.active {
+  display: flex !important;
 }
 
-/* ========== ANIMATION ========== */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ================= TEXT WRAP FIX ================= */
+h1, h2, h3, p, span {
+  max-width: 320px;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
-/* ========== TITLE ========== */
-.title {
-  font-size: 20px;
-  margin-bottom: 12px;
-  opacity: 0.9;
-}
-
-/* ========== INPUT FIX ========== */
+/* ================= INPUT ================= */
 input[type="text"] {
   width: 100%;
-  max-width: 300px;
+  max-width: 280px;
   padding: 14px 18px;
   border-radius: 30px;
   border: 1px solid rgba(255,255,255,0.25);
@@ -69,15 +64,10 @@ input[type="text"] {
   color: #fff;
   font-size: 15px;
   outline: none;
-  margin-bottom: 16px;
-  backdrop-filter: blur(8px);
+  margin: 12px 0;
 }
 
-input::placeholder {
-  color: rgba(255,255,255,0.6);
-}
-
-/* ========== BUTTON ========== */
+/* ================= BUTTON ================= */
 button {
   padding: 12px 36px;
   border-radius: 30px;
@@ -86,44 +76,37 @@ button {
   color: #fff;
   font-size: 15px;
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(255, 63, 127, 0.45);
+  margin-top: 10px;
 }
 
-/* ========== BEAR PAGE ========== */
-.bear-img {
-  width: 190px;
-  margin-bottom: 16px;
-  animation: float 3.5s ease-in-out infinite;
+/* ================= BEAR ================= */
+img {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 14px;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
+/* ================= SMALL TEXT ================= */
 .tap-text {
   font-size: 14px;
   opacity: 0.7;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-.bear-text {
-  font-size: 17px;
-  opacity: 0.9;
-  max-width: 300px;
-}
-
-/* ========== FINAL MESSAGE PAGE ========== */
+/* ================= FINAL MESSAGE ================= */
 .final-text {
   font-size: 17px;
-  max-width: 320px;
-  opacity: 0.9;
   line-height: 1.5;
+  opacity: 0.9;
 }
 
-/* ========== MOBILE SAFETY ========== */
+/* ================= MOBILE SAFETY ================= */
 @media (max-width: 380px) {
-  .bear-img {
-    width: 165px;
+  img {
+    max-width: 160px;
+  }
+
+  .final-text {
+    font-size: 16px;
   }
 }
