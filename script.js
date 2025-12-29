@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============================================
 
   // 1. NAMES (Lower Case Only!)
-  const bestFriendName = ["siddharth","sidharth"]; // 👈 Put your BEST FRIEND'S name here
+  const bestFriendName = ["siddharth","sidharth","hirendra"]; // 👈 Put your BEST FRIEND'S name here
   const specialBoys = ["hitesh", "rajat", "dev", "abhay","chandramani"]; // 👈 Put 4-5 SPECIAL BOYS here
   const specialGirls = ["ranjeeta", "chuleshwari", "ranjita"];
   
