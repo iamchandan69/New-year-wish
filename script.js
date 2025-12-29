@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // --- DOM ELEMENTS ---
   const nameBox = document.getElementById("nameBox");
   const nameInput = document.getElementById("nameInput");
   const nextBtn = document.getElementById("nextBtn");
@@ -7,40 +8,223 @@ document.addEventListener("DOMContentLoaded", () => {
   const main = document.getElementById("main");
   const bear = document.getElementById("bear");
 
-  const letterScreen = document.getElementById("letter"); // Screen container
-  const envelope = document.getElementById("envelope");   // Envelope Element
+  // Envelope Elements
+  const letterScreen = document.getElementById("letter");
+  const envelope = document.getElementById("envelope");
   const letterText = document.getElementById("letterText");
   const finalLine = document.getElementById("finalLine");
 
+  // Carousel Elements
+  const carouselScreen = document.getElementById("carousel-screen");
+  const textContainer = document.querySelector(".carousel-text-container");
+  const carouselImg = document.getElementById("carouselImg");
+  const carouselWrapper = document.querySelector(".carousel-wrapper");
+  const pagination = document.getElementById("pagination");
+  const cUser = document.getElementById("cUser");
+
+  // Video Elements
+  const videoScreen = document.getElementById("video-screen");
+  const boyVideo = document.getElementById("boyVideo");
+
+  // --- STATE ---
   let userName = "";
-  let gender = "boy";
-  
-  // Names Lists
+  let userCategory = "normalBoy"; // default
+  let currentImageIndex = 0;
+  let activeImages = [];
+  let isCarouselActive = false;
+  let slideStage = 0;
+
+  // ============================================
+  // 🔹 USER CONFIGURATION (EDIT HERE)
+  // ============================================
+
+  // 1. NAMES (Lower Case Only!)
+  const bestFriendName = "Siddharth","sidharth"; // 👈 Put your BEST FRIEND'S name here
+  const specialBoys = ["hitesh", "rajat", "dev", "abhay","chandramani"]; // 👈 Put 4-5 SPECIAL BOYS here
   const specialGirls = ["ranjeeta", "chuleshwari", "ranjita"];
+  
+  // 2. IMAGE FILES (Make sure these exist in your folder)
+  const bestFriendImages = ["bf1.jpg", "bf2.jpg", "bf3.jpg", "bf4.jpg", "bf5.jpg"];
+  const specialBoyImages = ["sb1.jpg", "sb2.jpg", "sb3.jpg", "sb4.jpg", "sb5.jpg","sb6.jpg"];
+  
+  const ranjitaImages = ["r1.jpg", "r2.jpg", "r3.jpg", "r4.jpg"]; 
+  const chuleshwariImages = ["c1.jpg", "c2.jpg", "c3.jpg"];
+
+  // 3. VIDEO FILE
+  const boyVideoFile = "boys_vibe.mp4"; // 👈 The video for Normal Boys
+
+  // 4. GENERAL NAME LISTS
   const forceBoyNames = ["chandramani", "shivmani", "hirendra", "arya", "rudra", "tilendra", "shiva", "ravi", "adi", "rishi", "hari", "jai", "harimani"];
   const forceGirlNames = ["suman", "kirti", "jyoti", "kiran", "kajal", "poonam", "ponam", "komal", "geet", "payal", "kanak", "shagun", "nupur", "gunjan", "heer", "kusum", "neelam", "sonal", "sejal", "dimple", "hetal", "chanchal"];
 
-  // 🔹 AUTO GENDER LOGIC
-  function detectGender(name) {
+  // ============================================
+
+  // --- LOGIC: DETECT CATEGORY ---
+  function detectCategory(name) {
     const n = name.toLowerCase().trim();
+
+    // 1. Check VIPs
+    if (n === bestFriendName) return "bestFriend";
+    if (specialBoys.includes(n)) return "specialBoy";
     if (specialGirls.includes(n)) return "specialGirl";
-    if (forceBoyNames.includes(n)) return "boy";
+
+    // 2. Check Manual Lists
+    if (forceBoyNames.includes(n)) return "normalBoy";
     if (forceGirlNames.includes(n)) return "girl";
+
+    // 3. Auto-Detect Gender
     const girlEndings = ["a", "i", "e"];
     if (girlEndings.some(end => n.endsWith(end))) return "girl";
-    return "boy";
+    
+    // Default fallback
+    return "normalBoy";
   }
 
-  // 🎉 CONFETTI BLAST
+  // 🔹 NEXT BUTTON CLICK
+  nextBtn.onclick = () => {
+    userName = nameInput.value.trim();
+    if (userName.length < 2) {
+      alert("Please enter your name");
+      return;
+    }
+
+    userCategory = detectCategory(userName);
+    
+    // Hide Login, Show Bear
+    nameBox.classList.add("hidden");
+    main.classList.remove("hidden");
+
+    // Set Bear Image based on Category
+    if (userCategory === "girl" || userCategory === "specialGirl") {
+      bear.src = "bear-girl.png";
+    } else {
+      bear.src = "bear-boy.png";
+    }
+  };
+
+  // 🔹 BEAR CLICK (Routing Logic)
+  bear.onclick = () => {
+    main.classList.add("hidden");
+
+    if (userCategory === "bestFriend") {
+      startCarousel("bestFriend");
+    } 
+    else if (userCategory === "specialBoy") {
+      startCarousel("specialBoy");
+    }
+    else if (userCategory === "specialGirl") {
+      startCarousel("specialGirl");
+    } 
+    else if (userCategory === "normalBoy") {
+      startVideo();
+    } 
+    else {
+      startEnvelope(); // Normal Girl
+    }
+  };
+
+  // --- 1. VIDEO LOGIC (Normal Boys) ---
+  function startVideo() {
+    videoScreen.classList.remove("hidden");
+    boyVideo.src = boyVideoFile;
+    // Auto-play since user interacted with the bear
+    boyVideo.play().catch(e => console.log("Autoplay prevented:", e));
+  }
+
+  // --- 2. ENVELOPE LOGIC (Normal Girls) ---
+  function startEnvelope() {
+    letterScreen.classList.remove("hidden");
+    
+    // Customize message if needed
+    letterText.innerHTML = `Happy New Year, <b>${userName}</b> 🤍<br><br>💫 New year, fresh start, happy heart.<br>Wishing you the best always.`;
+    finalLine.classList.add("hidden");
+
+    setTimeout(() => {
+      envelope.classList.add("open");
+      launchSideBlastConfetti();
+    }, 500);
+  }
+
+  // --- 3. CAROUSEL LOGIC (VIPs) ---
+  function startCarousel(type) {
+    carouselScreen.classList.remove("hidden");
+    cUser.innerText = userName; 
+
+    // Determine which images to show
+    if (type === "bestFriend") {
+      activeImages = bestFriendImages;
+    } else if (type === "specialBoy") {
+      activeImages = specialBoyImages;
+    } else if (type === "specialGirl") {
+      // Logic for different girls
+      const cleanName = userName.toLowerCase();
+      if (cleanName.includes("ranjita") || cleanName.includes("ranjeeta")) {
+        activeImages = ranjitaImages;
+      } else {
+        activeImages = chuleshwariImages;
+      }
+    }
+
+    // Setup Dots
+    pagination.innerHTML = "";
+    activeImages.forEach((_, i) => {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      pagination.appendChild(dot);
+    });
+
+    isCarouselActive = true;
+    slideStage = 0; // Reset to text view
+  }
+
+  // Carousel Interaction
+  carouselScreen.onclick = handleCarouselNext;
+  
+  let touchStartX = 0;
+  carouselScreen.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+  carouselScreen.addEventListener('touchend', e => {
+    if (e.changedTouches[0].screenX < touchStartX - 50) handleCarouselNext();
+  });
+
+  function handleCarouselNext() {
+    if (!isCarouselActive) return;
+
+    if (slideStage === 0) {
+      textContainer.classList.add("fade-out");
+      carouselWrapper.classList.add("fade-in");
+      pagination.classList.add("fade-in");
+      updateImage(0); 
+      slideStage = 1; 
+    } else {
+      currentImageIndex++;
+      if (currentImageIndex < activeImages.length) {
+        updateImage(currentImageIndex);
+      } else {
+        // Loop back to start
+        currentImageIndex = 0;
+        updateImage(0);
+      }
+    }
+  }
+
+  function updateImage(index) {
+    carouselImg.style.opacity = 0;
+    setTimeout(() => {
+      carouselImg.src = activeImages[index];
+      carouselImg.style.opacity = 1;
+    }, 200);
+
+    document.querySelectorAll(".dot").forEach((d, i) => {
+      d.classList.toggle("active", i === index);
+    });
+  }
+
+  // --- CONFETTI ---
   function launchSideBlastConfetti() {
     const container = document.getElementById("confetti-container");
     const colors = ["#ff00cc", "#00d4ff", "#ffcc00", "#ffffff", "#adff2f"];
 
-    const COUNT_PER_SIDE = 60;
-    const SPREAD = 120;
-    const POWER = 9;
-
-    for (let i = 0; i < COUNT_PER_SIDE; i++) {
+    for (let i = 0; i < 50; i++) {
       blast("left");
       blast("right");
     }
@@ -49,77 +233,27 @@ document.addEventListener("DOMContentLoaded", () => {
       const c = document.createElement("div");
       c.className = "confetti";
       c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
-      const startY = window.innerHeight * 0.35 + Math.random() * 250;
-      const startX = side === "left" ? -30 : window.innerWidth + 30;
+      
+      const startX = side === "left" ? 0 : window.innerWidth;
+      const startY = window.innerHeight * 0.5;
 
       let x = startX;
       let y = startY;
+      
+      let vx = (side === "left" ? 1 : -1) * (Math.random() * 10 + 5);
+      let vy = (Math.random() - 0.5) * 15;
 
-      const baseAngle = side === "left" ? 0 : 180;
-      const angle = baseAngle + (Math.random() * SPREAD - SPREAD / 2);
-
-      let vx = Math.cos(angle * Math.PI / 180) * (POWER + Math.random() * 3);
-      let vy = Math.sin(angle * Math.PI / 180) * (POWER + Math.random() * 3);
-
-      c.style.left = startX + "px";
-      c.style.top = startY + "px";
       container.appendChild(c);
 
       const anim = setInterval(() => {
         x += vx;
         y += vy;
-        vy += 0.35;
-        c.style.transform = `translate(${x - startX}px, ${y - startY}px) rotate(${x * 0.5}deg)`;
-        if (y > window.innerHeight + 80) {
-          clearInterval(anim);
-          c.remove();
-        }
-      }, 16);
+        vy += 0.5; 
+        c.style.left = x + "px";
+        c.style.top = y + "px";
+        if (y > window.innerHeight) { clearInterval(anim); c.remove(); }
+      }, 20);
     }
   }
-
-  // 🔹 NEXT BUTTON
-  nextBtn.onclick = () => {
-    userName = nameInput.value.trim();
-    if (userName.length < 2) {
-      alert("Please enter your name");
-      return;
-    }
-    gender = detectGender(userName);
-    nameBox.classList.add("hidden");
-    main.classList.remove("hidden");
-
-    // Set Bear Image
-    bear.src = (gender === "girl" || gender === "specialGirl") ? "bear-girl.png" : "bear-boy.png";
-  };
-
-  // 🔹 BEAR CLICK → SHOW ENVELOPE → OPEN AUTOMATICALLY
-  bear.onclick = () => {
-    main.classList.add("hidden");
-    letterScreen.classList.remove("hidden"); // Show Envelope Screen
-
-    // Set Message Content
-    if (gender === "specialGirl") {
-      letterText.innerHTML = `Happy New Year, <b>${userName}</b> 🤍<br><br>Some people don’t just enter a year… they quietly make it unforgettable.<br>I hope 2026 reminds you how special you truly are. ✨`;
-      finalLine.classList.remove("hidden");
-    } else if (gender === "girl") {
-      letterText.innerHTML = `Happy New Year, <b>${userName}</b> 🤍<br><br>💫 New year, fresh start, happy heart.<br>Wishing you the best always.`;
-      finalLine.classList.add("hidden");
-    } else {
-      letterText.innerHTML = `Happy New Year mere bhai, <b>${userName}</b>. 🎊<br><br>Naya saal aa gaya, par ek cheez jo kabhi nahi badlegi…<br>Wo hai humari dosti or Bhaichara on top💪😌 
-      Chahe saal badle, calendar badle, phones badle,
-Par humari bakchodi, late replies,
-Random plans fir cancel karna 😂
-Aur “bhai kal milte hain” ka loop same hi rahega 😂`;
-      finalLine.classList.add("hidden");
-    }
-
-    // 🕒 DELAY: Wait 0.5s, then Open Envelope & Blast Confetti
-    setTimeout(() => {
-      envelope.classList.add("open"); // Starts CSS Animation
-      launchSideBlastConfetti();      // Boom! 🎉
-    }, 500);
-  };
 
 });
