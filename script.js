@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const n = name.toLowerCase().trim();
 
     // 1. Check VIPs
-    if (n === bestFriendName) return "bestFriend";
+    if (bestFriendName.includes(n)) return "bestFriend";
     if (specialBoys.includes(n)) return "specialBoy";
     if (specialGirls.includes(n)) return "specialGirl";
 
