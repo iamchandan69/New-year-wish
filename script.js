@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cleanName.includes("ranjita") || cleanName.includes("ranjeeta")) {
         activeImages = ranjitaImages;
       } else {
+      if (cleanName.includes("chuleshwari") || cleanName.includes("chuleswari")) {
         activeImages = chuleshwariImages;
       }
     }
