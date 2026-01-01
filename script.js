@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. NAMES (Lower Case Only!)
   const bestFriendName = ["siddharth","sidharth","hirendra"]; // 👈 Put your BEST FRIEND'S name here
   const specialBoys = ["hitesh", "rajat", "dev", "abhay","chandramani"]; // 👈 Put 4-5 SPECIAL BOYS here
-  const specialGirls = ["ranjeeta", "chuleshwari", "ranjita"];
+  const specialGirls = ["ranjeeta", "chuleswari", "ranjita"];
   
   // 2. IMAGE FILES (Make sure these exist in your folder)
   const bestFriendImages = ["bf1.jpg", "bf2.jpg", "bf3.jpg", "bf4.jpg", "bf5.jpg"];
