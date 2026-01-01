@@ -39,19 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============================================
 
   // 1. NAMES (Lower Case Only!)
-  const bestFriendName = ["siddharth","sidharth","hirendra"]; // 👈 Put your BEST FRIEND'S name here
-  const specialBoys = ["hitesh", "rajat", "dev", "abhay","chandramani"]; // 👈 Put 4-5 SPECIAL BOYS here
-  const specialGirls = ["ranjeeta", "chuleswari","chuleshwari","ranjita"];
+  const bestFriendName = ["siddharth", "sidharth", "hirendra"]; 
+  const specialBoys = ["hitesh", "rajat", "dev", "abhay", "chandramani"]; 
+  
+  // ✅ UPDATED: Added both spellings here
+  const specialGirls = ["ranjeeta", "ranjita", "chuleswari", "chuleshwari"];
   
   // 2. IMAGE FILES (Make sure these exist in your folder)
   const bestFriendImages = ["bf1.jpg", "bf2.jpg", "bf3.jpg", "bf4.jpg", "bf5.jpg"];
-  const specialBoyImages = ["sb1.jpg", "sb2.jpg", "sb3.jpg", "sb4.jpg", "sb5.jpg","sb6.jpg"];
+  const specialBoyImages = ["sb1.jpg", "sb2.jpg", "sb3.jpg", "sb4.jpg", "sb5.jpg", "sb6.jpg"];
   
   const ranjitaImages = ["r1.jpg", "r2.jpg", "r3.jpg", "r4.jpg"]; 
   const chuleshwariImages = ["c1.jpg", "c2.jpg", "c3.jpg"];
 
   // 3. VIDEO FILE
-  const boyVideoFile = "boys_vibe.mp4"; // 👈 The video for Normal Boys
+  const boyVideoFile = "boys_vibe.mp4"; 
 
   // 4. GENERAL NAME LISTS
   const forceBoyNames = ["chandramani", "shivmani", "hirendra", "arya", "rudra", "tilendra", "shiva", "ravi", "adi", "rishi", "hari", "jai", "harimani"];
@@ -156,12 +158,13 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (type === "specialBoy") {
       activeImages = specialBoyImages;
     } else if (type === "specialGirl") {
-      // Logic for different girls
       const cleanName = userName.toLowerCase();
+      
+      // ✅ UPDATED: Logic to handle multiple spellings
       if (cleanName.includes("ranjita") || cleanName.includes("ranjeeta")) {
         activeImages = ranjitaImages;
-      } else {
-      if (cleanName.includes("chuleshwari") || cleanName.includes("chuleswari")) {
+      } 
+      else if (cleanName.includes("chuleshwari") || cleanName.includes("chuleswari")) {
         activeImages = chuleshwariImages;
       }
     }
